@@ -18,9 +18,8 @@ const CapsulesPage = () => {
       setLoading(true);
       setError(null); // Reset error state
       try {
-        const response = await axios.post("/api/getCapsules", {
-          username: user.username,
-        });
+        const data={username:user?.username}
+        const response = await axios.post("/api/getCapsules",data);
         setCapsules(response.data.capsules);
       } catch (error: any) {
         console.error("Error fetching capsules:", error);
@@ -36,7 +35,7 @@ const CapsulesPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-950 to-slate-500 p-8">
-      <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-6">Capsules</h1>
+      <h1 className="text-4xl font-extrabold text-center text-white mb-6">Capsules</h1>
 
       <button
         className={`px-6 py-3 text-lg font-semibold text-white rounded-lg shadow-md transition-all duration-300 ease-in-out ${
