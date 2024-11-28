@@ -2,14 +2,17 @@ import mongoose, { Document, Schema } from "mongoose";
 
 
 export interface CapsuleModel extends Document{
+    _id:mongoose.Types.ObjectId
     title:string,
     description:string,
     createdAt:Date,
-    OpenOn:Date,
+    openOn:Date,
     picture:Buffer
+    isOpen:boolean
 }
 
 const capsuleSchema:Schema<CapsuleModel> = new Schema({
+
     title:{
         type:String,
         required:true
@@ -22,12 +25,16 @@ const capsuleSchema:Schema<CapsuleModel> = new Schema({
         type:Date,
         required:true
     },
-    OpenOn:{
+    openOn:{
         type:Date,
         required:true
     },
     picture:{
         type:Buffer,
+    },
+    isOpen:{
+        type:Boolean,
+        default:false
     }
 })
 

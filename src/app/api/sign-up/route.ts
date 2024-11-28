@@ -9,7 +9,7 @@
         const {username,email,password}=await request.json();
         console.log(username,email,password)
 
-        dbConnect();
+        await dbConnect();
 
     try {
         const existingUser= await userModel.findOne({
